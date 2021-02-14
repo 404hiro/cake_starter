@@ -1,0 +1,21 @@
+version: '3'
+services:
+  cake_web:
+    container_name: cake_web
+    build: .
+    volumes:
+      - ./web:/var/www/html/cake_starter
+    ports:
+      - "80:80"
+  cake_db: 
+    image: postgres:latest
+    container_name: cake_db
+    environment: 
+      POSTGRES_DB: cake_db
+      POSTGRES_ROOT_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432 
+    volumes:
+      - ./db:/var/lib/postgresql/data
